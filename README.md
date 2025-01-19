@@ -53,3 +53,29 @@ const SignMessage = () => {
     )
 }
 ```
+
+### 3. 트랜잭션 발생
+ ```javascript
+const sendTransaction = async ({recevied, balance}) => {
+    await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [
+            {
+                from: address,
+                to: recevied,
+                value: balance,
+                gasLimit: '0x5028',
+                maxPriorityFeePerGas: '0x3b9aca00',
+                maxFeePerGas: '0x2540be400',
+            },
+        ],
+    })
+}
+  
+
+const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
+    // ...
+    await sendTransaction(formData) 
+}
+
+ ```

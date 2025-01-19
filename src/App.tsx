@@ -4,6 +4,7 @@ import {
     useAccount,
     useSignMessage,
 } from '@metamask/sdk-react-ui'
+import SendEthereumTransaction from './components/SendEthereumTransaction.tsx'
 
 function App() {
     const { isConnected, address, connector, status } = useAccount()
@@ -17,12 +18,13 @@ function App() {
                 Connector: {connector?.id} / {status.toLocaleUpperCase()}
             </p>
 
-            {isConnected && <SignMessage />}
+            {isConnected && <RequestSignMessage />}
+            {isConnected && <SendEthereumTransaction />}
         </>
     )
 }
 
-const SignMessage = () => {
+const RequestSignMessage = () => {
     const { data, signMessage, isSuccess, isError, isLoading } = useSignMessage(
         {
             message: '서명합니다.',
