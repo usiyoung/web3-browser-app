@@ -1,8 +1,8 @@
 import './App.css'
-import { useAccount } from '@metamask/sdk-react-ui'
+import { MetaMaskButton, useAccount } from '@metamask/sdk-react-ui'
 import SendEthereumTransaction from './components/SendEthereumTransaction.tsx'
 import RequestSignMessage from './components/RequestSignMessage.tsx'
-import MetaMaskConnect from './components/MetaMaskConnect.tsx'
+import MetaMaskConnect from './components/AccountInfo.tsx'
 import Counter from './components/Counter.tsx'
 
 function App() {
@@ -10,9 +10,14 @@ function App() {
 
     return (
         <>
-            <MetaMaskConnect />
+            <MetaMaskButton />
+
+            {isConnected && <MetaMaskConnect />}
+
             {isConnected && <RequestSignMessage />}
+
             {isConnected && <SendEthereumTransaction />}
+
             {isConnected && <Counter />}
         </>
     )

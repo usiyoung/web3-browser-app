@@ -8,10 +8,15 @@ const RequestSignMessage = () => {
     )
     return (
         <>
+            <h2>RequestSignMessage</h2>
             <SignButton isLoading={isLoading} onClick={() => signMessage()} />
 
             <div>
-                {isSuccess && <p>Signature: {data}</p>}
+                {isSuccess && (
+                    <p style={{ width: '500px', wordWrap: 'break-word' }}>
+                        Signature: {data}
+                    </p>
+                )}
                 {isError && <p>다시 시도해보세요.</p>}
             </div>
         </>

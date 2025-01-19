@@ -13,6 +13,8 @@ const Counter = () => {
 
     return (
         <>
+            <h2>SmartContract</h2>
+
             <p>카운터: {count}</p>
             <button onClick={increment}>➕</button>
             <button onClick={decrement}>➖</button>

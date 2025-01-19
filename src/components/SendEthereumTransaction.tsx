@@ -17,7 +17,7 @@ const SendEthereumTransaction = () => {
 
     return (
         <>
-            <p>send Transaction</p>
+            <h2>SendTransaction</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     name="recevied"

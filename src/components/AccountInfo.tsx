@@ -1,12 +1,11 @@
-import { MetaMaskButton, useAccount } from '@metamask/sdk-react-ui'
+import { useAccount } from '@metamask/sdk-react-ui'
 
-const MetaMaskConnect = () => {
+const AccountInfo = () => {
     const { address, connector, status } = useAccount()
 
     return (
         <>
-            <MetaMaskButton />
-
+            <h2>AccountInfo</h2>
             <p>Address: {address}</p>
             <p>
                 Connector: {connector?.id} / {status.toLocaleUpperCase()}
@@ -15,4 +14,4 @@ const MetaMaskConnect = () => {
     )
 }
 
-export default MetaMaskConnect
+export default AccountInfo
