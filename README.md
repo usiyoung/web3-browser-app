@@ -77,5 +77,10 @@ const handleSubmit = async (e: ChangeEvent<HTMLFormElement>) => {
     // ...
     await sendTransaction(formData) 
 }
-
  ```
+
+### 4. 스마트 컨트랙트
+
+```shell
+npm install ethers
+```
