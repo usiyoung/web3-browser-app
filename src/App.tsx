@@ -1,10 +1,57 @@
-import { useState } from 'react'
 import './App.css'
+import {
+    MetaMaskButton,
+    useAccount,
+    useSignMessage,
+} from '@metamask/sdk-react-ui'
 
 function App() {
-    const [count, setCount] = useState(0)
+    const { isConnected, address, connector, status } = useAccount()
 
-    return <>page init</>
+    return (
+        <>
+            <MetaMaskButton />
+
+            <p>Address: {address}</p>
+            <p>
+                Connector: {connector?.id} / {status.toLocaleUpperCase()}
+            </p>
+
+            {isConnected && <SignMessage />}
+        </>
+    )
+}
+
+const SignMessage = () => {
+    const { data, signMessage, isSuccess, isError, isLoading } = useSignMessage(
+        {
+            message: '서명합니다.',
+        },
+    )
+    return (
+        <>
+            <SignButton isLoading={isLoading} onClick={() => signMessage()} />
+
+            <div>
+                {isSuccess && <p>Signature: {data}</p>}
+                {isError && <p>다시 시도해보세요.</p>}
+            </div>
+        </>
+    )
+}
+
+const SignButton = ({
+    isLoading,
+    onClick,
+}: {
+    isLoading: boolean
+    onClick: () => void
+}) => {
+    return (
+        <button onClick={onClick} disabled={isLoading}>
+            서명 요청
+        </button>
+    )
 }
 
 export default App
